@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" th:replace="base::layout(~{::section})">
+<head>
+  <meta charset="UTF-8">
+  <title>this is home page</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+
+</head>
+<body>
+<section>
+
+  <main class="login-form">
+    <div class="cotainer">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="card">
+              <form id="login-form" class="form" th:action="@{/dologin}" action="#" method="post">
+                    <div class="card-header">Login</div>
+
+                      <div th:if="${param.error}" class="alert alert-danger">
+                           Invalid username and password
+                      </div>
+
+                      <div th:if="${param.logout}" class="alert alert-success">
+                           You have been logged out
+                      </div>
+
+                      <div th:if="${param.change}" class="alert alert-success">
+                          <p th:text="${param.change}"></p>
+                      </div>
+
+                <div class="card-body">
+                      <div class="form-group row">
+                         <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+                        <div class="col-md-6">
+                          <input type="text" id="username" class="form-control" name="username" required autofocus>
+                        </div>
+                      </div>
+
+                   <div class="form-group row">
+                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                     <div class="col-md-6">
+                        <input type="password" id="password" class="form-control" name="password" required>
+                     </div>
+                    </div>
+
+                     <div class="form-group row">
+                       <div class="col-md-6 offset-md-4">
+                          <div class="checkbox">
+                            <label >
+                                 <input type="checkbox" name="remember"> Remember Me
+                             </label>
+                          </div>
+                       </div>
+                     </div>
+
+                    <div class="col-md-6 offset-md-4">
+                       <button type="submit" class="btn btn-primary">
+                           Submit
+                       </button>
+                       <span id="register-link" class="">
+                         <a href="/signup" class="btn btn-link">
+                             Register here
+                         </a>
+                       </span>
+
+                    </div>
+
+                    <div class="container text-center">
+
+                        <a th:href="@{/forgot}">Forgot Password ?</a>
+
+                    </div>
+                </div>
+             </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+</section>
+</body>
+</html>
